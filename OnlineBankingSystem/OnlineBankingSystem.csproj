@@ -172,13 +172,33 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\ViewModel\AddPhoneNumberViewModel.cs" />
+    <Compile Include="Core\ViewModel\ChangePasswordViewModel.cs" />
+    <Compile Include="Core\ViewModel\ConfigureTwoFactorViewModel.cs" />
+    <Compile Include="Core\ViewModel\ExternalLoginConfirmationViewModel.cs" />
+    <Compile Include="Core\ViewModel\ExternalLoginListViewModel.cs" />
+    <Compile Include="Core\ViewModel\FactorViewModel.cs" />
+    <Compile Include="Core\ViewModel\ForgotPasswordViewModel.cs" />
+    <Compile Include="Core\ViewModel\ForgotViewModel.cs" />
+    <Compile Include="Core\ViewModel\IndexViewModel.cs" />
+    <Compile Include="Core\ViewModel\LoginViewModel.cs" />
+    <Compile Include="Core\ViewModel\ManageLoginsViewModel.cs" />
+    <Compile Include="Core\ViewModel\RegisterViewModel.cs" />
+    <Compile Include="Core\ViewModel\ResetPasswordViewModel.cs" />
+    <Compile Include="Core\ViewModel\SendCodeViewModel.cs" />
+    <Compile Include="Core\ViewModel\SetPasswordViewModel.cs" />
+    <Compile Include="Core\ViewModel\VerifyCodeViewModel.cs" />
+    <Compile Include="Core\ViewModel\VerifyPhoneNumberViewModel.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\ApplicationDbContext.cs" />
-    <Compile Include="Models\ApplicationUser.cs" />
-    <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Persistence\Migrations\202004011353510_update-applicationuser.cs" />
+    <Compile Include="Persistence\Migrations\202004011353510_update-applicationuser.Designer.cs">
+      <DependentUpon>202004011353510_update-applicationuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\Configuration.cs" />
+    <Compile Include="Persistence\ApplicationDbContext.cs" />
+    <Compile Include="Core\ApplicationUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -279,7 +299,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Core\" />
+    <Folder Include="Core\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -291,6 +311,11 @@
   </ItemGroup>
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Persistence\Migrations\202004011353510_update-applicationuser.resx">
+      <DependentUpon>202004011353510_update-applicationuser.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
