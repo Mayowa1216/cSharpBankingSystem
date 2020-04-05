@@ -1,0 +1,39 @@
+﻿@model OnlineBankingSystem.Core.ViewModel.LoginViewModel
+
+    @{
+        ViewBag.Title = "Login";
+        Layout = "~/Views/Shared/_Login.cshtml";
+    }
+
+<section class="sign-in">
+    <div class="container">
+        <div class="signin-content">
+            <div class="signin-image">
+               
+                <figure><img src="~/Content/images/signin-image.jpg" alt="sing up image"></figure>
+                <a href="@Url.Action("Index","Customer")" class="signup-image-link">Create an account</a>
+            </div>
+
+            <div class="signin-form">
+                <h2 class="form-title">Sign up</h2>
+                @using (Html.BeginForm("Login", "Customer", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-account zmdi-email"></i></label>
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "Your Email" })
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                        @Html.PasswordFor(x => x.Password, new { @placeholder = "password" })
+                    </div>
+
+                    <div class="form-group form-button">
+                        <input type="submit" name="signin" id="signin" class="form-submit" value="Log in" />
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>
+

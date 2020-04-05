@@ -1,0 +1,60 @@
+﻿@model OnlineBankingSystem.Core.ViewModel.RegisterViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Login.cshtml";
+}
+
+<section class="signup">
+    <div class="container">
+        <div class="signup-content">
+            <div class="signup-form">
+                <h2 class="form-title">Sign up</h2>
+                @using (Html.BeginForm("Index", "Customer", FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label for="Lastname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        @Html.TextBoxFor(x => x.Lastname, new { @placeholder = "your last name" })
+                    </div>
+                    <div class="form-group">
+                        <label for="Firstname"><i class="zmdi zmdi-account material-icons-name"></i></label>
+                        @Html.TextBoxFor(x => x.Firstname, new { @placeholder = "your first name" })
+                    </div>
+                    <div class="form-group">
+                        <label for="email"><i class="zmdi zmdi-email"></i></label>
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "your email" })
+                    </div>
+                    <div class="form-group">
+                        <label for="phone"><i class="zmdi zmdi-account zmdi-phone"></i></label>
+                        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "your phone" })
+                    </div>
+                    <div class="form-group">
+                        <label for="password"><i class="zmdi zmdi-lock"></i></label>
+                        @Html.PasswordFor(x=>x.Password,new { @placeholder = "password" })
+                       
+                    </div>
+                    <div class="form-group">
+                        <label for="pconfirm-password"><i class="zmdi zmdi-lock-outline"></i></label>
+                        @Html.TextBoxFor(x=>x.ConfirmPassword,new {@placeholder= "Repeat your password" })
+                    </div>
+                    @*<div class="form-group">
+                       
+                    </div>*@
+                    <div class="form-group form-button">
+                        <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
+                    </div>
+
+                }
+            </div>
+            <div class="signup-image">
+                <figure><img src="~/Content/images/signup-image.jpg" alt="sing up image"></figure>
+                <a href="@Url.Action("Login","Customer")" class="signup-image-link">I am already member</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+{
+
+}
+

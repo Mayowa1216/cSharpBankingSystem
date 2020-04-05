@@ -1,5 +1,7 @@
 ﻿using Microsoft.AspNet.Identity.EntityFramework;
 using OnlineBankingSystem.Core;
+using OnlineBankingSystem.Core.Models;
+using System.Data.Entity;
 
 namespace OnlineBankingSystem.Persistence
 {
@@ -10,6 +12,10 @@ namespace OnlineBankingSystem.Persistence
         {
         }
 
+        public DbSet<AccountType> accountType { get; set; }
+        public DbSet<Account> account { get; set; }
+        public DbSet<TransactionType> transactionTypes { get; set; }
+        public DbSet<Transaction> transactions { get; set; }
         public static ApplicationDbContext Create()
         {
             return new ApplicationDbContext();

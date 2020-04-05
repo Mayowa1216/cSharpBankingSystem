@@ -170,8 +170,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\Models\Account.cs" />
+    <Compile Include="Core\Models\AccountType.cs" />
+    <Compile Include="Core\Models\Entity.cs" />
+    <Compile Include="Core\Models\Transaction.cs" />
+    <Compile Include="Core\Models\TransactionType.cs" />
     <Compile Include="Core\ViewModel\AddPhoneNumberViewModel.cs" />
     <Compile Include="Core\ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="Core\ViewModel\ConfigureTwoFactorViewModel.cs" />
@@ -192,9 +198,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\EntityConfigurations\AccountConfigurations.cs" />
+    <Compile Include="Persistence\EntityConfigurations\TransactionConfiguration.cs" />
     <Compile Include="Persistence\Migrations\202004011353510_update-applicationuser.cs" />
     <Compile Include="Persistence\Migrations\202004011353510_update-applicationuser.Designer.cs">
       <DependentUpon>202004011353510_update-applicationuser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Persistence\Migrations\202004031347178_add-entity.cs" />
+    <Compile Include="Persistence\Migrations\202004031347178_add-entity.Designer.cs">
+      <DependentUpon>202004031347178_add-entity.cs</DependentUpon>
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
@@ -209,7 +221,16 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\images\signin-image.jpg" />
+    <Content Include="Content\images\signup-image.jpg" />
+    <Content Include="Content\material-design-iconic-font.css" />
+    <Content Include="Content\material-design-iconic-font.min.css" />
+    <Content Include="Content\style.css" />
+    <Content Include="Content\css\font-awesome.css" />
+    <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="favicon.ico" />
+    <Content Include="fonts\fontawesome-webfont.svg" />
+    <Content Include="fonts\Material-Design-Iconic-Font.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -234,6 +255,16 @@
     <Content Include="Content\bootstrap-reboot.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
+    <Content Include="Content\style.css.map" />
+    <Content Include="fonts\FontAwesome.otf" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff" />
+    <Content Include="fonts\fontawesome-webfont.ttf" />
+    <Content Include="fonts\fontawesome-webfont.eot" />
+    <Content Include="fonts\Material-Design-Iconic-Font.eot" />
+    <Content Include="fonts\Material-Design-Iconic-Font.ttf" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff" />
+    <Content Include="fonts\Material-Design-Iconic-Font.woff2" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -296,10 +327,12 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\Shared\_Login.cshtml" />
+    <Content Include="Views\Customer\Index.cshtml" />
+    <Content Include="Views\Customer\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Core\Models\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -315,6 +348,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Persistence\Migrations\202004011353510_update-applicationuser.resx">
       <DependentUpon>202004011353510_update-applicationuser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\202004031347178_add-entity.resx">
+      <DependentUpon>202004031347178_add-entity.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
