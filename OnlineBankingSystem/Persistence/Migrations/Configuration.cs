@@ -2,10 +2,7 @@ namespace OnlineBankingSystem.Migrations
 {
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
-    using System;
-    using System.Data.Entity;
     using System.Data.Entity.Migrations;
-    using System.Linq;
 
     internal sealed class Configuration : DbMigrationsConfiguration<OnlineBankingSystem.Persistence.ApplicationDbContext>
     {
@@ -18,6 +15,7 @@ namespace OnlineBankingSystem.Migrations
         protected override void Seed(OnlineBankingSystem.Persistence.ApplicationDbContext context)
         {
             var RoleManager = new RoleManager<IdentityRole>(new RoleStore<IdentityRole>(context));
+
 
             if (!RoleManager.RoleExists("Admin"))
             {
@@ -34,6 +32,7 @@ namespace OnlineBankingSystem.Migrations
                 IdentityResult roleresult = RoleManager.Create(new IdentityRole("Customer"));
             }
 
+           
         }
     }
 }

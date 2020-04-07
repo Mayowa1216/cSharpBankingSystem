@@ -1,4 +1,6 @@
-﻿using System;
+﻿using OnlineBankingSystem.Core.Infrastructure.Attributes;
+using OnlineBankingSystem.Core.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -12,6 +14,19 @@ namespace OnlineBankingSystem.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [ValidateGoogleCaptcha]
+        public ActionResult Index(RegisterViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+            }
+
+            return RedirectToAction("", "");
         }
 
 

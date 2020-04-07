@@ -25,8 +25,9 @@ namespace OnlineBankingSystem
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/style.css",
-                      "~/Content/site.css",
-                      "~/Content/material-design-iconic-font.css"
+                        "~/Content/material-design-iconic-font.css",
+                      "~/Content/site.css"
+                    
                       ));
         }
     }
