@@ -7,6 +7,15 @@
     Layout = "~/Views/Shared/_Login.cshtml";
 }
 
+@if (ViewBag.message != null)
+{
+    <script type="text/javascript">
+        var opo='@ViewBag.message';
+        alert(opo);
+    </script>
+}
+
+
 <section class="signup">
     <div class="container">
         <div class="signup-content">
@@ -14,6 +23,9 @@
                 <h2 class="form-title">Sign up</h2>
                 @using (Html.BeginForm("Index", "Customer", FormMethod.Post))
                 {
+                    @Html.ValidationSummary()
+                    @Html.AntiForgeryToken()
+
                     <div class="form-group">
                         <label for="Lastname"><i class="zmdi zmdi-account material-icons-name"></i></label>
                         @Html.TextBoxFor(x => x.Lastname, new { @placeholder = "your last name" })
@@ -24,11 +36,11 @@
                     </div>
                     <div class="form-group">
                         <label for="email"><i class="zmdi zmdi-email"></i></label>
-                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "your email" })
+                        @Html.TextBoxFor(x => x.Email, new { @placeholder = "your email eg ad@gmail.com" })
                     </div>
                     <div class="form-group">
                         <label for="phone"><i class="zmdi zmdi-account zmdi-phone"></i></label>
-                        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "your phone" })
+                        @Html.TextBoxFor(x => x.Phone, new { @placeholder = "your phone eg 09123457856" })
                     </div>
                     <div class="form-group">
                         <label for="password"><i class="zmdi zmdi-lock"></i></label>
@@ -37,12 +49,14 @@
                     </div>
                     <div class="form-group">
                         <label for="pconfirm-password"><i class="zmdi zmdi-lock-outline"></i></label>
-                        @Html.TextBoxFor(x=>x.ConfirmPassword,new {@placeholder= "Repeat your password" })
+                        @Html.PasswordFor(x=>x.ConfirmPassword,new {@placeholder= "Repeat your password" })
                     </div>
+
                     <div class="form-group">
                         @Html.GoogleCaptcha()
                         @Html.InvalidGoogleCaptchaLabel("Captcha is not valid !")
                     </div>
+
                     <div class="form-group form-button">
                         <input type="submit" name="signup" id="signup" class="form-submit" value="Register" />
                     </div>
@@ -57,7 +71,4 @@
     </div>
 </section>
 
-{
-
-}
 

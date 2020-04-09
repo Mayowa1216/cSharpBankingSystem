@@ -13,6 +13,7 @@ namespace OnlineBankingSystem
         public void Configuration(IAppBuilder app)
         {
             ConfigureAuth(app);
+            DefaultUser();
         }
         private static void DefaultUser()
         {

@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNet.Identity;
+﻿using AutoMapper;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using OnlineBankingSystem.Core;
 using OnlineBankingSystem.Core.Infrastructure.Attributes;
@@ -14,15 +15,18 @@ namespace OnlineBankingSystem.Controllers
 
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private readonly IMapper _mapper;
 
-        public CustomerController()
+        public CustomerController(IMapper mapper)
         {
+            _mapper = mapper;
         }
 
         public CustomerController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+          
         }
 
         public ApplicationSignInManager SignInManager
@@ -51,6 +55,10 @@ namespace OnlineBankingSystem.Controllers
         // GET: Customer
         public ActionResult Index()
         {
+            if (Session["message"] != null)
+            {
+                ViewBag.message = Session["message"].ToString();
+            }
             return View();
         }
 
@@ -60,16 +68,13 @@ namespace OnlineBankingSystem.Controllers
         public async Task<ActionResult> Index(RegisterViewModel model)
         {
             var user = UserManager.FindByEmail(model.Email);
+          
             if (user == null)
             {
-                
-                    var op = new ApplicationUser
-                    {
-                        Firstname = model.Firstname,
-                        Lastname = model.Lastname,
-                        Email = model.Email,
-                        UserName = model.Email
-                    };
+                var op = _mapper.Map<ApplicationUser>(model);
+                op.UserName = model.Email;
+              
+                   
                     var result = await UserManager.CreateAsync(op, model.Password);
                     if (result.Succeeded)
                     {
@@ -77,8 +82,8 @@ namespace OnlineBankingSystem.Controllers
                         //send confirmation message
                         string Id = op.Id;
                         string code = await UserManager.GenerateEmailConfirmationTokenAsync(Id);
-                        var confirmUrl = Url.Action("ConfirmEmail", "Account",
-                            new { userId = op.Id, token = code }, Request.Url.Scheme);
+                        //var confirmUrl = Url.Action("ConfirmEmail", "Account",
+                           // new { userId = op.Id, token = code }, Request.Url.Scheme);
 
 
                        // _context.cs.SendEmail(op.Email, op.Lastname + op.Firstname, "Confirmation message", "Please confirm your account by clicking <a class='btn btn-primary' href=\"" + confirmUrl + "\">here</a>");
@@ -87,14 +92,12 @@ namespace OnlineBankingSystem.Controllers
                         await UserManager.AddToRoleAsync(op.Id, "Customer");
 
                         Session["message"] = "Account successfully created, an email has been sent to your account for confirmation";
-                        return RedirectToAction("Local");
+                        return RedirectToAction("Index", "Customer");
                     }
                     foreach (var j in result.Errors)
                     {
                         ModelState.AddModelError("", j.ToString());
-                    }
-                
-
+                    }               
             }
             else
             {

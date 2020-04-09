@@ -5,11 +5,12 @@ namespace OnlineBankingSystem.App_Start
 {
     using System;
     using System.Web;
-
+    using AutoMapper;
     using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 
     using Ninject;
     using Ninject.Web.Common;
+    using OnlineBankingSystem.Persistence;
 
     public static class NinjectWebCommon 
     {
@@ -46,6 +47,14 @@ namespace OnlineBankingSystem.App_Start
                 kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
                 RegisterServices(kernel);
+
+                var mapConfiguration = CreateConfiguration();
+
+                kernel.Bind<MapperConfiguration>().ToConstant(mapConfiguration).InSingletonScope();
+
+                kernel.Bind<IMapper>().ToMethod(ctx =>
+                  new Mapper(mapConfiguration, type => ctx.Kernel.Get(type)));
+
                 return kernel;
             }
             catch
@@ -61,6 +70,17 @@ namespace OnlineBankingSystem.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-        }        
+        }
+
+        private static MapperConfiguration CreateConfiguration()
+        {
+            var config = new MapperConfiguration(cfg =>
+            {
+                // Add all profiles in current assembly
+                cfg.AddProfile(new MappingProfile());
+            });
+
+            return config;
+        }
     }
 }
