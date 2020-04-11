@@ -6,8 +6,8 @@ using System.Threading.Tasks;
 
 namespace OnlineBankingSystem.Core.Repositories
 {
-    public interface IUnitOfWork
+    public interface IEmailService
     {
-        IEmailService cs { get; }
+        void SendEmail(string EmailTo, string user, string subject, string content);
     }
 }

@@ -10,6 +10,8 @@ namespace OnlineBankingSystem.App_Start
 
     using Ninject;
     using Ninject.Web.Common;
+    using OnlineBankingSystem.Core.Repositories;
+    // using OnlineBankingSystem.Core.Repositories;
     using OnlineBankingSystem.Persistence;
 
     public static class NinjectWebCommon 
@@ -55,6 +57,8 @@ namespace OnlineBankingSystem.App_Start
                 kernel.Bind<IMapper>().ToMethod(ctx =>
                   new Mapper(mapConfiguration, type => ctx.Kernel.Get(type)));
 
+                kernel.Bind<IUnitOfWork>().To<UnitOfWork>();
+
                 return kernel;
             }
             catch
@@ -72,7 +76,7 @@ namespace OnlineBankingSystem.App_Start
         {
         }
 
-        private static MapperConfiguration CreateConfiguration()
+        public static MapperConfiguration CreateConfiguration()
         {
             var config = new MapperConfiguration(cfg =>
             {

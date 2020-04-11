@@ -1,4 +1,4 @@
-﻿using System.Web;
+﻿using OnlineBankingSystem.Core.Models;
 using System.Web.Mvc;
 
 namespace OnlineBankingSystem
@@ -8,6 +8,7 @@ namespace OnlineBankingSystem
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
             filters.Add(new HandleErrorAttribute());
+            filters.Add(new CustomRequireHttpsFilter());
         }
     }
 }
