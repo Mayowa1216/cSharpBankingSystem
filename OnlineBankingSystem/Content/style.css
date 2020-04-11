@@ -192,6 +192,12 @@ h2 {
 .clear {
   clear: both; }
 
+
+.move-left{
+    position:absolute;
+    right:20%;
+}
+
 body {
   font-size: 13px;
   line-height: 1.8;

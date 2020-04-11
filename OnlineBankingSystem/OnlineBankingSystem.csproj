@@ -869,6 +869,8 @@
     <Content Include="Scripts\vendors\bootstrap.js.map" />
     <Content Include="Scripts\vendors\bootstrap.min.js.map" />
     <Content Include="Views\Shared\_menu.cshtml" />
+    <Content Include="Views\Customer\ForgotPassword.cshtml" />
+    <Content Include="Views\Customer\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

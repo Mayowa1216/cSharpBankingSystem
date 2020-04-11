@@ -117,6 +117,11 @@ namespace OnlineBankingSystem.Controllers
 
         public ActionResult Login()
         {
+            if (Session["res"] != null)
+            {
+                ViewBag.res = Session["res"].ToString();
+                Session["res"] = null;
+            }
             return View();
         }
 
@@ -170,11 +175,93 @@ namespace OnlineBankingSystem.Controllers
           
         }
 
+        [AllowAnonymous]
         public ActionResult ForgotPassword()
         {
+            if (Session["Reset"] != null)
+            {
+                ViewBag.reset = Session["Reset"].ToString();
+                Session["Reset"] = null;
+            }
+
             return View();
         }
 
+
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateGoogleCaptcha]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ForgotPassword(ForgotPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByNameAsync(model.Email);
+                if (user != null)
+                {
+                    var token = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                    var resetUrl = Url.Action("ResetPassword", "Customer",
+                           new { user.Email, token }, Request.Url.Scheme);
+
+
+                    unitOfWork.cs.SendEmail(user.Email, user.Lastname, "Password reset message", "Please reset your account by clicking <a class='btn btn-primary' href=\"" + resetUrl + "\">here</a>");
+                    ModelState.Clear();
+                    Session["Reset"] = "Your password reset is in progress check your email for further details";
+                }
+                else
+                {
+                    unitOfWork.cs.SendEmail(user.Email, user.Lastname, "Reset password", "You don't have an account");
+                    Session["Reset"] = "Your passsword reset is in progress check your email for further details";
+                }
+            }
+
+            // If we got this far, something failed, redisplay form
+            return RedirectToAction("ForgotPassword", "Customer");
+        }
+
+
+        [AllowAnonymous]
+        public ActionResult ResetPassword(string token, string email)
+        {
+            return View(new ResetPasswordViewModel
+            {
+                Code = token,
+                Email = email
+            });
+        }
+
+        
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> ResetPassword(ResetPasswordViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                var user = await UserManager.FindByEmailAsync(model.Email);
+                if (user != null)
+                {
+                    var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+                    if (!result.Succeeded)
+                    {
+                        foreach (var error in result.Errors)
+                        {
+                            ModelState.AddModelError("", error);
+                        }   
+                        return View();
+                    }
+                    
+                    ModelState.Clear();
+
+                    Session["res"] = "A reset password was successfull";
+                    unitOfWork.cs.SendEmail(user.Email, user.Lastname + user.Firstname, "Password Reset", "A reset password was successfull, if not you click the forgot password");
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            ModelState.AddModelError("", "Invalid Request");
+
+            return View();
+        }
 
 
         public async Task<ActionResult> ConfirmEmail(string userId, string token)
