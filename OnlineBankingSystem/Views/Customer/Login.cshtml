@@ -24,8 +24,10 @@
 
             <div class="signin-form">
                 <h2 class="form-title">Sign in</h2>
-                @using (Html.BeginForm("Login", "Customer", FormMethod.Post))
+                @using (Html.BeginForm("Login", "Customer", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post))
                 {
+                    @Html.AntiForgeryToken()
+
                     <div class="form-group">
                         <label for="email"><i class="zmdi zmdi-account zmdi-account-box-mail"></i></label>
                         @Html.TextBoxFor(x => x.Email, new { @placeholder = "Your Email" })

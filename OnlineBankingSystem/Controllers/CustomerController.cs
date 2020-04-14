@@ -87,7 +87,7 @@ namespace OnlineBankingSystem.Controllers
                         //send confirmation message
                         string Id = op.Id;
                         string code = await UserManager.GenerateEmailConfirmationTokenAsync(Id);
-                        var confirmUrl = Url.Action("ConfirmEmail", "Account",
+                        var confirmUrl = Url.Action("ConfirmEmail", "Customer",
                             new { userId = op.Id, token = code }, Request.Url.Scheme);
 
 
@@ -115,19 +115,20 @@ namespace OnlineBankingSystem.Controllers
     }
 
 
-        public ActionResult Login()
+        public ActionResult Login(string returnUrl)
         {
             if (Session["res"] != null)
             {
                 ViewBag.res = Session["res"].ToString();
                 Session["res"] = null;
             }
+            ViewBag.ReturnUrl = returnUrl;
             return View();
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Login(LoginViewModel model,string returnURL)
+        public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
             if (!ModelState.IsValid)
             {
@@ -151,9 +152,9 @@ namespace OnlineBankingSystem.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+                    //var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
                     Session["NextSleep"] = 0;
-                    return RedirectToLocal(returnURL);
+                    return RedirectToLocal(returnUrl);
                 case SignInStatus.Failure:
                 default:
                     var nextSleepMs = 0;
@@ -255,7 +256,7 @@ namespace OnlineBankingSystem.Controllers
 
                     Session["res"] = "A reset password was successfull";
                     unitOfWork.cs.SendEmail(user.Email, user.Lastname + user.Firstname, "Password Reset", "A reset password was successfull, if not you click the forgot password");
-                    return RedirectToAction("Login", "Account");
+                    return RedirectToAction("Login", "Customer");
                 }
             }
             ModelState.AddModelError("", "Invalid Request");
@@ -279,10 +280,10 @@ namespace OnlineBankingSystem.Controllers
         {
             var user = UserManager.FindById(userId);
             string code = await UserManager.GenerateEmailConfirmationTokenAsync(userId);
-            var callbackUrl = Url.Action("ConfirmEmail", "Account",
+            var callbackUrl = Url.Action("ConfirmEmail", "Customer",
                new { userId = userId, token = code }, protocol: Request.Url.Scheme);
 
-            //  cs.SendEmail(user.Email, user.Lastname + user.Firstname, "Resend Confirmation", "Please confirm your account by clicking <a class='btn btn-primary' href=\"" + callbackUrl + "\">here</a>");
+             unitOfWork.cs.SendEmail(user.Email, user.Lastname + user.Firstname, "Resend Confirmation", "Please confirm your account by clicking <a class='btn btn-primary' href=\"" + callbackUrl + "\">here</a>");
 
             return callbackUrl;
         }
@@ -293,7 +294,7 @@ namespace OnlineBankingSystem.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("Login", "Customer");
+            return RedirectToAction("Index", "Home");
         }
 
 
