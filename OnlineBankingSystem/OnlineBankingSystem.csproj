@@ -27,6 +27,7 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TypeScriptToolsVersion>3.7</TypeScriptToolsVersion>
+    <WebGreaseLibPath>..\packages\WebGrease.1.5.2\lib</WebGreaseLibPath>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -47,21 +48,24 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
-    </Reference>
-    <Reference Include="BouncyCastle.Crypto, Version=1.8.5.0, Culture=neutral, PublicKeyToken=0e99375e54769942, processorArchitecture=MSIL">
-      <HintPath>..\packages\Portable.BouncyCastle.1.8.5\lib\net40\BouncyCastle.Crypto.dll</HintPath>
     </Reference>
     <Reference Include="MailKit, Version=2.5.0.0, Culture=neutral, PublicKeyToken=4e064fe7c44a8f1b, processorArchitecture=MSIL">
       <HintPath>..\packages\MailKit.2.6.0\lib\net48\MailKit.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.1.1.0\lib\net461\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="MimeKit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <HintPath>..\packages\MimeKit.2.6.0\lib\net48\MimeKit.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
@@ -70,35 +74,22 @@
       <HintPath>..\packages\Ninject.Web.Common.3.2.0.0\lib\net45-full\Ninject.Web.Common.dll</HintPath>
     </Reference>
     <Reference Include="Ninject.Web.Mvc, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
-      <HintPath>..\packages\Ninject.MVC5.3.2.1.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
+      <HintPath>..\packages\Ninject.MVC5.3.2.0.0\lib\net45-full\Ninject.Web.Mvc.dll</HintPath>
     </Reference>
     <Reference Include="System" />
-    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Configuration.Install" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Management" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.0.0\lib\net45\System.Net.Http.Formatting.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=4.0.4.1, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.4.5.2\lib\netstandard2.0\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Security" />
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.2\lib\netstandard2.0\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.0.0\lib\net45\System.Web.Http.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.0.0\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Optimization, Version=1.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -109,10 +100,6 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
-    </Reference>
     <Reference Include="System.Net.Http">
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
@@ -124,9 +111,6 @@
     <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Optimization">
-      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
     </Reference>
     <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -144,19 +128,14 @@
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="WebActivator, Version=1.5.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebActivator.1.5.3\lib\net40\WebActivator.dll</HintPath>
     </Reference>
     <Reference Include="WebActivatorEx, Version=2.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
       <HintPath>..\packages\WebActivatorEx.2.0\lib\net40\WebActivatorEx.dll</HintPath>
     </Reference>
-    <Reference Include="WebGrease">
-      <Private>True</Private>
-      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
-    </Reference>
-    <Reference Include="Antlr3.Runtime">
-      <Private>True</Private>
-      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="WebGrease, Version=1.5.2.14234, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -220,6 +199,7 @@
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Core\ApplicationUser.cs" />
     <Compile Include="Core\Infrastructure\Attributes\ValidateGoogleCaptchaAttribute.cs" />
     <Compile Include="Core\Infrastructure\HtmlHelpers\GoogleCaptureHelper.cs" />
     <Compile Include="Core\Infrastructure\HtmlHelpers\InvalidGoogleCaptchaHelper.cs" />
@@ -232,8 +212,10 @@
     <Compile Include="Core\Models\Entity.cs" />
     <Compile Include="Core\Models\Transaction.cs" />
     <Compile Include="Core\Models\TransactionType.cs" />
+    <Compile Include="Core\Repositories\IAccount.cs" />
     <Compile Include="Core\Repositories\IEmailService.cs" />
     <Compile Include="Core\Repositories\IUnitOfWork.cs" />
+    <Compile Include="Core\ViewModel\AccountViewModel.cs" />
     <Compile Include="Core\ViewModel\AddPhoneNumberViewModel.cs" />
     <Compile Include="Core\ViewModel\ChangePasswordViewModel.cs" />
     <Compile Include="Core\ViewModel\ConfigureTwoFactorViewModel.cs" />
@@ -268,7 +250,7 @@
     </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
-    <Compile Include="Core\ApplicationUser.cs" />
+    <Compile Include="Persistence\Repository\AccountRepository.cs" />
     <Compile Include="Persistence\Repository\EmailServiceRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -292,239 +274,21 @@
     <Content Include="Content\build\images\loading.gif" />
     <Content Include="Content\build\js\custom.js" />
     <Content Include="Content\build\js\custom.min.js" />
-    <Content Include="Content\images\american-express.png" />
-    <Content Include="Content\images\cropper.jpg" />
-    <Content Include="Content\images\favicon.ico" />
-    <Content Include="Content\images\img.jpg" />
-    <Content Include="Content\images\inbox.png" />
-    <Content Include="Content\images\mastercard.png" />
-    <Content Include="Content\images\media.jpg" />
-    <Content Include="Content\images\paypal.png" />
-    <Content Include="Content\images\picture.jpg" />
-    <Content Include="Content\images\prod-1.jpg" />
-    <Content Include="Content\images\prod-2.jpg" />
-    <Content Include="Content\images\prod-3.jpg" />
-    <Content Include="Content\images\prod-4.jpg" />
-    <Content Include="Content\images\prod-5.jpg" />
     <Content Include="Content\images\signin-image.jpg" />
     <Content Include="Content\images\signup-image.jpg" />
-    <Content Include="Content\images\user.png" />
-    <Content Include="Content\images\visa.png" />
     <Content Include="Content\material-design-iconic-font.css" />
     <Content Include="Content\material-design-iconic-font.min.css" />
     <Content Include="Content\style.css" />
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
-    <Content Include="Content\vendors\animate.css\animate.css" />
-    <Content Include="Content\vendors\animate.css\animate.min.css" />
-    <Content Include="Content\vendors\autosize\.gitignore" />
-    <Content Include="Content\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker-standalone.css" />
-    <Content Include="Content\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.css" />
-    <Content Include="Content\vendors\bootstrap-datetimepicker\build\css\bootstrap-datetimepicker.min.css" />
-    <Content Include="Content\vendors\bootstrap\.babelrc.js" />
-    <Content Include="Content\vendors\bootstrap\.gitattributes" />
-    <Content Include="Content\vendors\bootstrap\.gitignore" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.css" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.css" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.min.css" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.css" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.min.css" />
-    <Content Include="Content\vendors\Chart.js\.gitignore" />
-    <Content Include="Content\vendors\datatables.net-bs\css\dataTables.bootstrap.css" />
-    <Content Include="Content\vendors\datatables.net-bs\css\dataTables.bootstrap.min.css" />
-    <Content Include="Content\vendors\datatables.net-responsive-bs\css\responsive.bootstrap.css" />
-    <Content Include="Content\vendors\datatables.net-responsive-bs\css\responsive.bootstrap.min.css" />
-    <Content Include="Content\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.css" />
-    <Content Include="Content\vendors\datatables.net-scroller-bs\css\scroller.bootstrap.min.css" />
-    <Content Include="Content\vendors\font-awesome\.gitignore" />
+    <Content Include="Content\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.3.4.min.css" />
     <Content Include="Content\vendors\font-awesome\css\font-awesome.css" />
     <Content Include="Content\vendors\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\vendors\font-awesome\HELP-US-OUT.txt" />
-    <Content Include="Content\vendors\fontawesome\.gitignore" />
-    <Content Include="Content\vendors\fontawesome\css\font-awesome.css" />
-    <Content Include="Content\vendors\fontawesome\css\font-awesome.min.css" />
-    <Content Include="Content\vendors\fontawesome\fonts\fontawesome-webfont.svg" />
-    <Content Include="Content\vendors\fontawesome\HELP-US-OUT.txt" />
-    <Content Include="Content\vendors\fullcalendar\dist\fullcalendar.css" />
-    <Content Include="Content\vendors\fullcalendar\dist\fullcalendar.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\fullcalendar.min.css" />
-    <Content Include="Content\vendors\fullcalendar\dist\fullcalendar.min.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\fullcalendar.print.css" />
-    <Content Include="Content\vendors\fullcalendar\dist\gcal.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang-all.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ar-ma.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ar-sa.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ar-tn.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ar.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\bg.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ca.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\cs.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\da.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\de-at.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\de.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\el.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\en-au.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\en-ca.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\en-gb.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\en-ie.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\en-nz.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\es.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\fa.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\fi.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\fr-ca.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\fr-ch.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\fr.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\he.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\hi.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\hr.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\hu.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\id.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\is.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\it.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ja.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ko.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\lt.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\lv.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\nb.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\nl.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\pl.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\pt-br.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\pt.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ro.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\ru.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\sk.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\sl.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\sr-cyrl.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\sr.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\sv.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\th.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\tr.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\uk.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\vi.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\zh-cn.js" />
-    <Content Include="Content\vendors\fullcalendar\dist\lang\zh-tw.js" />
-    <Content Include="Content\vendors\fullcalendar\LICENSE.txt" />
-    <Content Include="Content\vendors\iCheck\skins\all.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\aero%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\aero.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\aero.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\blue%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\blue.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\blue.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\flat%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\flat.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\flat.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\green%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\green.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\green.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\grey%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\grey.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\grey.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\orange%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\orange.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\orange.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\pink%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\pink.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\pink.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\purple%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\purple.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\purple.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\red%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\red.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\red.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\yellow%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\yellow.css" />
-    <Content Include="Content\vendors\iCheck\skins\flat\yellow.png" />
-    <Content Include="Content\vendors\iCheck\skins\flat\_all.css" />
-    <Content Include="Content\vendors\iCheck\skins\futurico\futurico%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\futurico\futurico.css" />
-    <Content Include="Content\vendors\iCheck\skins\futurico\futurico.png" />
-    <Content Include="Content\vendors\iCheck\skins\line\aero.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\blue.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\green.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\grey.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\line%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\line\line.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\line.png" />
-    <Content Include="Content\vendors\iCheck\skins\line\orange.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\pink.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\purple.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\red.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\yellow.css" />
-    <Content Include="Content\vendors\iCheck\skins\line\_all.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\aero%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\aero.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\aero.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\blue%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\blue.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\blue.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\green%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\green.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\green.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\grey%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\grey.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\grey.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\minimal%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\minimal.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\minimal.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\orange%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\orange.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\orange.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\pink%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\pink.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\pink.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\purple%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\purple.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\purple.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\red%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\red.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\red.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\yellow%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\yellow.css" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\yellow.png" />
-    <Content Include="Content\vendors\iCheck\skins\minimal\_all.css" />
-    <Content Include="Content\vendors\iCheck\skins\polaris\polaris%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\polaris\polaris.css" />
-    <Content Include="Content\vendors\iCheck\skins\polaris\polaris.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\aero%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\aero.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\aero.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\blue%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\blue.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\blue.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\green%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\green.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\green.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\grey%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\grey.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\grey.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\orange%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\orange.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\orange.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\pink%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\pink.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\pink.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\purple%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\purple.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\purple.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\red%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\red.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\red.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\square%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\square.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\square.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\yellow%402x.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\yellow.css" />
-    <Content Include="Content\vendors\iCheck\skins\square\yellow.png" />
-    <Content Include="Content\vendors\iCheck\skins\square\_all.css" />
-    <Content Include="Content\vendors\jquery.easy-pie-chart\.gitignore" />
-    <Content Include="Content\vendors\normalize-css\.gitignore" />
-    <Content Include="Content\vendors\normalize-css\normalize.css" />
+    <Content Include="Content\vendors\iCheck\flat\green.css" />
+    <Content Include="Content\vendors\jqvmap\jqvmap.css" />
+    <Content Include="Content\vendors\jqvmap\jqvmap.min.css" />
     <Content Include="Content\vendors\nprogress\nprogress.css" />
-    <Content Include="Content\vendors\validator\.gitattributes" />
-    <Content Include="Content\vendors\validator\.gitignore" />
     <Content Include="Content\vendors\validator\fv.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -643,133 +407,12 @@
     <Content Include="fonts\poppins\roboto-condensed-v16-latin-regular.ttf" />
     <Content Include="fonts\poppins\roboto-condensed-v16-latin-regular.woff" />
     <Content Include="fonts\poppins\roboto-condensed-v16-latin-regular.woff2" />
-    <Content Include="Content\vendors\animate.css\.bower.json" />
-    <Content Include="Content\vendors\autosize\.bower.json" />
-    <Content Include="Content\vendors\bootstrap-daterangepicker\.bower.json" />
-    <Content Include="Content\vendors\bootstrap-progressbar\.bower.json" />
-    <Content Include="Content\vendors\bootstrap\.bower.json" />
-    <Content Include="Content\vendors\bootstrap\.browserslistrc" />
-    <Content Include="Content\vendors\bootstrap\.editorconfig" />
-    <Content Include="Content\vendors\bootstrap\.eslintignore" />
-    <Content Include="Content\vendors\bootstrap\.eslintrc.json" />
-    <Content Include="Content\vendors\bootstrap\.github\CODEOWNERS" />
-    <Content Include="Content\vendors\bootstrap\.github\CONTRIBUTING.md" />
-    <Content Include="Content\vendors\bootstrap\.github\ISSUE_TEMPLATE\bug.md" />
-    <Content Include="Content\vendors\bootstrap\.github\ISSUE_TEMPLATE\bug_report.md" />
-    <Content Include="Content\vendors\bootstrap\.github\ISSUE_TEMPLATE\feature.md" />
-    <Content Include="Content\vendors\bootstrap\.github\ISSUE_TEMPLATE\feature_request.md" />
-    <Content Include="Content\vendors\bootstrap\.github\SUPPORT.md" />
-    <Content Include="Content\vendors\bootstrap\.stylelintignore" />
-    <Content Include="Content\vendors\bootstrap\.stylelintrc" />
-    <Content Include="Content\vendors\bootstrap\.travis.yml" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.css.map" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.min.css.map" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.css.map" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.css.map" />
-    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.min.css.map" />
-    <Content Include="Content\vendors\Chart.js\.bower.json" />
-    <Content Include="Content\vendors\Chart.js\.codeclimate.yml" />
-    <Content Include="Content\vendors\Chart.js\.editorconfig" />
-    <Content Include="Content\vendors\Chart.js\.eslintignore" />
-    <Content Include="Content\vendors\Chart.js\.eslintrc" />
-    <Content Include="Content\vendors\Chart.js\.github\ISSUE_TEMPLATE.md" />
-    <Content Include="Content\vendors\Chart.js\.github\PULL_REQUEST_TEMPLATE.md" />
-    <Content Include="Content\vendors\Chart.js\.travis.yml" />
-    <Content Include="Content\vendors\datatables.net-bs\.bower.json" />
-    <Content Include="Content\vendors\datatables.net-responsive-bs\.bower.json" />
-    <Content Include="Content\vendors\datatables.net-scroller-bs\.bower.json" />
-    <Content Include="Content\vendors\datatables.net\.bower.json" />
-    <Content Include="Content\vendors\DateJS\.bower.json" />
-    <Content Include="Content\vendors\devbridge-autocomplete\.bower.json" />
-    <Content Include="Content\vendors\font-awesome\.bower.json" />
-    <Content Include="Content\vendors\font-awesome\.npmignore" />
-    <Content Include="Content\vendors\font-awesome\bower.json" />
     <Content Include="Content\vendors\font-awesome\css\font-awesome.css.map" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.ttf" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\vendors\font-awesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\vendors\font-awesome\less\animated.less" />
-    <Content Include="Content\vendors\font-awesome\less\bordered-pulled.less" />
-    <Content Include="Content\vendors\font-awesome\less\core.less" />
-    <Content Include="Content\vendors\font-awesome\less\fixed-width.less" />
-    <Content Include="Content\vendors\font-awesome\less\font-awesome.less" />
-    <Content Include="Content\vendors\font-awesome\less\icons.less" />
-    <Content Include="Content\vendors\font-awesome\less\larger.less" />
-    <Content Include="Content\vendors\font-awesome\less\list.less" />
-    <Content Include="Content\vendors\font-awesome\less\mixins.less" />
-    <Content Include="Content\vendors\font-awesome\less\path.less" />
-    <Content Include="Content\vendors\font-awesome\less\rotated-flipped.less" />
-    <Content Include="Content\vendors\font-awesome\less\screen-reader.less" />
-    <Content Include="Content\vendors\font-awesome\less\stacked.less" />
-    <Content Include="Content\vendors\font-awesome\less\variables.less" />
-    <Content Include="Content\vendors\font-awesome\scss\font-awesome.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_animated.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_bordered-pulled.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_core.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_fixed-width.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_icons.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_larger.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_list.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_mixins.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_path.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_rotated-flipped.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_screen-reader.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_stacked.scss" />
-    <Content Include="Content\vendors\font-awesome\scss\_variables.scss" />
-    <Content Include="Content\vendors\fontawesome\.bower.json" />
-    <Content Include="Content\vendors\fontawesome\.npmignore" />
-    <Content Include="Content\vendors\fontawesome\bower.json" />
-    <Content Include="Content\vendors\fontawesome\css\font-awesome.css.map" />
-    <Content Include="Content\vendors\fontawesome\fonts\fontawesome-webfont.eot" />
-    <Content Include="Content\vendors\fontawesome\fonts\fontawesome-webfont.ttf" />
-    <Content Include="Content\vendors\fontawesome\fonts\fontawesome-webfont.woff" />
-    <Content Include="Content\vendors\fontawesome\fonts\fontawesome-webfont.woff2" />
-    <Content Include="Content\vendors\fontawesome\fonts\FontAwesome.otf" />
-    <Content Include="Content\vendors\fontawesome\less\animated.less" />
-    <Content Include="Content\vendors\fontawesome\less\bordered-pulled.less" />
-    <Content Include="Content\vendors\fontawesome\less\core.less" />
-    <Content Include="Content\vendors\fontawesome\less\fixed-width.less" />
-    <Content Include="Content\vendors\fontawesome\less\font-awesome.less" />
-    <Content Include="Content\vendors\fontawesome\less\icons.less" />
-    <Content Include="Content\vendors\fontawesome\less\larger.less" />
-    <Content Include="Content\vendors\fontawesome\less\list.less" />
-    <Content Include="Content\vendors\fontawesome\less\mixins.less" />
-    <Content Include="Content\vendors\fontawesome\less\path.less" />
-    <Content Include="Content\vendors\fontawesome\less\rotated-flipped.less" />
-    <Content Include="Content\vendors\fontawesome\less\stacked.less" />
-    <Content Include="Content\vendors\fontawesome\less\variables.less" />
-    <Content Include="Content\vendors\fontawesome\scss\font-awesome.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_animated.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_bordered-pulled.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_core.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_fixed-width.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_icons.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_larger.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_list.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_mixins.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_path.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_rotated-flipped.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_stacked.scss" />
-    <Content Include="Content\vendors\fontawesome\scss\_variables.scss" />
-    <Content Include="Content\vendors\fullcalendar\.bower.json" />
-    <Content Include="Content\vendors\fullcalendar\bower.json" />
-    <Content Include="Content\vendors\fullcalendar\CHANGELOG.md" />
-    <Content Include="Content\vendors\fullcalendar\CONTRIBUTING.md" />
-    <Content Include="Content\vendors\fullcalendar\README.md" />
-    <Content Include="Content\vendors\iCheck\.bower.json" />
-    <Content Include="Content\vendors\jQuery-Smart-Wizard\.bower.json" />
-    <Content Include="Content\vendors\jquery-sparkline\.bower.json" />
-    <Content Include="Content\vendors\jquery.easy-pie-chart\.bower.json" />
-    <Content Include="Content\vendors\jquery.easy-pie-chart\.travis.yml" />
-    <Content Include="Content\vendors\jqvmap\.bower.json" />
-    <Content Include="Content\vendors\normalize-css\.bower.json" />
-    <Content Include="Content\vendors\normalize-css\.editorconfig" />
-    <Content Include="Content\vendors\normalize-css\.travis.yml" />
-    <Content Include="Content\vendors\nprogress\.bower.json" />
-    <Content Include="Content\vendors\validator\.bower.json" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -863,14 +506,10 @@
     <Content Include="Views\Shared\_Login.cshtml" />
     <Content Include="Views\Customer\Index.cshtml" />
     <Content Include="Views\Customer\Login.cshtml" />
-    <Content Include="Views\Customer\Admin.cshtml" />
     <Content Include="Scripts\vendors\bootstrap.bundle.js.map" />
     <Content Include="Scripts\vendors\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\vendors\bootstrap.js.map" />
     <Content Include="Scripts\vendors\bootstrap.min.js.map" />
-    <Content Include="Views\Shared\_menu.cshtml" />
-    <Content Include="Views\Customer\ForgotPassword.cshtml" />
-    <Content Include="Views\Customer\ResetPassword.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
