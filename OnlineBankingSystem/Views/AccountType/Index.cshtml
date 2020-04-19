@@ -1,0 +1,50 @@
+﻿@model OnlineBankingSystem.Core.ViewModel.AccountTypeEditViewModel
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Create Account Type <small></small></h2>
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="container-fluid">
+                        @using (Html.BeginForm("Index", "Account", FormMethod.Post))
+                        {
+                            @Html.AntiForgeryToken()
+
+                            <div class="row">
+                                <div class="col-md-5">
+                                    <div class="form-group">
+                                       @Html.LabelFor(x => x.name, "Account Type", new { @class = "contol-label" })
+                                       @Html.TextBoxFor(x => x.name, new { @class = "form-control" }) 
+                                       @Html.ValidationMessageFor(x => x.name, "", new {@class="text-danger"})
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-4 col-sm-4">
+                                    <div class="form-group">
+                                        <input type="submit" class="btn btn-success" value="Save">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+</div>

@@ -22,6 +22,18 @@ namespace OnlineBankingSystem.Persistence.Repository
             _context.account.Add(acct);
         }
 
+        public async Task<IEnumerable<AccountTypeViewModel>> AllAct()
+        {
+            var r = (from c in _context.accountType
+                     select new AccountTypeViewModel
+                     {
+                         Id=c.Id,
+                         name = c.AccountTypeName
+                     }).ToListAsync();
+
+            return await r;
+        }
+
         public bool checkIfExist(string accountNo)
         {
             var yup = _context.account.Any(x => x.ActNo == accountNo);
@@ -39,6 +51,11 @@ namespace OnlineBankingSystem.Persistence.Repository
         }
 
         public async Task<IEnumerable<AccountViewModel>> GetAll()
+        {
+            throw new NotImplementedException();
+        }
+
+        public Task<IEnumerable<AccountViewModel>> GetById(string Id)
         {
             throw new NotImplementedException();
         }

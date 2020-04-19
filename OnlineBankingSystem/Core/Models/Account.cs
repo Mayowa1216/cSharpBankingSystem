@@ -11,7 +11,7 @@ namespace OnlineBankingSystem.Core.Models
         public string ActNo { get; set; }
         public string AcctName { get; set; }
         public decimal Amount { get; set; }
-        public decimal TransLimit { get; set; }
+        public decimal TransLimit { get; set; } = 100000M;
         public ICollection<AccountType> AccountType { get; set; }
         public ApplicationUser user { get; set; }
       

@@ -9,5 +9,13 @@ namespace OnlineBankingSystem.Core.Models
     {
         public string AccountTypeName { get; set; }
         public Account accounts { get; set; }
+        public bool isDelete { get; set; }
+
+
+        public void Remove()
+        {
+            isDelete = true;
+        }
+
     }
 }

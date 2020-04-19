@@ -12,8 +12,10 @@ namespace OnlineBankingSystem.Core.Repositories
     {
         void Add(Account acct);
         bool checkIfExist(string accountNo);
-        Task<Account> Get(int id);
         Task<IEnumerable<AccountViewModel>> GetAll();
+        Task<Account> Get(int id);
+        Task<IEnumerable<AccountTypeViewModel>> AllAct();
+        Task<IEnumerable<AccountViewModel>> GetById(string Id);
         void update(Account act);
         void Delete(Account act);
     }

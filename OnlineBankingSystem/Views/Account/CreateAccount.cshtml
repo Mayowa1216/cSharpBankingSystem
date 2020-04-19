@@ -1,0 +1,82 @@
+﻿@model OnlineBankingSystem.Core.ViewModel.AccountEditViewModel
+
+@{
+    ViewBag.Title = "CreateAccount";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="right_col" role="main">
+    <div class="">
+
+        <div class="clearfix"></div>
+        <div class="row">
+            <div class="col-md-12 col-sm-12 ">
+                <div class="x_panel">
+                    <div class="x_title">
+                        <h2>Create Account<small></small></h2>
+
+                        <div class="clearfix"></div>
+                    </div>
+
+                    <div class="container-fluid">
+                        <br />
+                        @using (Html.BeginForm())
+                        {
+                        <div class="row space">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.AccountNo, "Account no", new { @class = "contol-label" })
+                                    @Html.TextBoxFor(x => x.AccountNo, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.Name, "Account name", new { @class = "contol-label" })
+                                    @Html.TextBoxFor(x => x.Name, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row space">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.Amount, "Amount", new { @class = "contol-label" })
+                                    @Html.TextBoxFor(x => x.Amount, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                    @Html.LabelFor(x => x.TransactLimit, "Transaction Limit", new { @class = "contol-label" })
+                                    @Html.TextBoxFor(x => x.TransactLimit, new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div> 
+                           
+                        <div class="row space">
+                            <div class="col-md-5">
+                                <div class="form-group">
+                                     @Html.LabelFor(x => x.ActType, "Account type", new { @class = "contol-label" })
+                                     @Html.DropDownListFor(x => x.ActType, new SelectList(Model.type, "name", "name"), "select account type", new { @class = "form-control" })
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-4 col-sm-4">
+                                <input type="submit" class="btn btn-success" value="Save">
+                            </div>
+                        </div>
+
+                            
+                       
+                        }
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+

@@ -1,0 +1,53 @@
+﻿@model IEnumerable<OnlineBankingSystem.Core.ViewModel.AccountTypeViewModel>
+
+@{
+    ViewBag.Title = "ViewAccountType";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="right_col" role="main">
+    <div class="">
+        <div class="page-title">
+            <div class="title_left">
+                <h3><a href="@Url.Action("Index","AccountType")" class="btn btn-success">Create Account type</a></h3>
+            </div>
+           
+        </div>
+        <div class="clesarfix"></div>
+        <div class="row" style="display: block;">
+            <div class="col-md-12 col-sm-12  ">
+                <div class="x_panel">
+                    <div class="x_content">
+                        <div class="table-responsive">
+                            <table class="table table-striped jambo_table bulk_action">
+                                <thead>
+                                    <tr class="headings">
+                                        <th>
+                                            <input type="checkbox" id="check-all" class="flat">
+                                        </th>
+                                        <th class="column-title">Account Type</th>
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var m in Model)
+                                    {
+                                        <tr>
+                                            <td>@m.name</td>
+                                            <td><a href="@Url.Action("Edit","AccountType",new { id = m.Id })"><i class="fa fa-edit"></i>Edit</a>
+                                                <a href="@Url.Action("Delete","AccountType",new { id = m.Id })"><i class="fa fa-trash"></i>Delete</a></td>
+                                        </tr>
+                                       
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

@@ -9,5 +9,8 @@ namespace OnlineBankingSystem.Core.Repositories
     public interface IUnitOfWork
     {
         IEmailService cs { get; }
+        IAccount ct { get; }
+        IAccountType cv { get; }
+        void Complete();
     }
 }

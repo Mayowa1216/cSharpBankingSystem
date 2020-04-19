@@ -48,8 +48,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Antlr3.Runtime, Version=3.4.1.9004, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
-      <HintPath>..\packages\Antlr.3.4.1.9004\lib\Antlr3.Runtime.dll</HintPath>
+    <Reference Include="Antlr3.Runtime, Version=3.5.0.2, Culture=neutral, PublicKeyToken=eb42632606e9261f, processorArchitecture=MSIL">
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="AutoMapper, Version=9.0.0.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
       <HintPath>..\packages\AutoMapper.9.0.0\lib\net461\AutoMapper.dll</HintPath>
@@ -64,8 +64,8 @@
     <Reference Include="MimeKit, Version=2.6.0.0, Culture=neutral, PublicKeyToken=bede1c8a46c66814, processorArchitecture=MSIL">
       <HintPath>..\packages\MimeKit.2.6.0\lib\net48\MimeKit.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=11.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Ninject, Version=3.2.0.0, Culture=neutral, PublicKeyToken=c7192dc5380945e7, processorArchitecture=MSIL">
       <HintPath>..\packages\Ninject.3.2.0.0\lib\net45-full\Ninject.dll</HintPath>
@@ -196,9 +196,9 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AccountTypeController.cs" />
     <Compile Include="Controllers\CustomerController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Core\ApplicationUser.cs" />
     <Compile Include="Core\Infrastructure\Attributes\ValidateGoogleCaptchaAttribute.cs" />
     <Compile Include="Core\Infrastructure\HtmlHelpers\GoogleCaptureHelper.cs" />
@@ -213,8 +213,12 @@
     <Compile Include="Core\Models\Transaction.cs" />
     <Compile Include="Core\Models\TransactionType.cs" />
     <Compile Include="Core\Repositories\IAccount.cs" />
+    <Compile Include="Core\Repositories\IAccountType.cs" />
     <Compile Include="Core\Repositories\IEmailService.cs" />
     <Compile Include="Core\Repositories\IUnitOfWork.cs" />
+    <Compile Include="Core\ViewModel\AccountEditViewModel.cs" />
+    <Compile Include="Core\ViewModel\AccountTypeEditViewModel.cs" />
+    <Compile Include="Core\ViewModel\AccountTypeViewModel.cs" />
     <Compile Include="Core\ViewModel\AccountViewModel.cs" />
     <Compile Include="Core\ViewModel\AddPhoneNumberViewModel.cs" />
     <Compile Include="Core\ViewModel\ChangePasswordViewModel.cs" />
@@ -248,9 +252,14 @@
     <Compile Include="Persistence\Migrations\202004031347178_add-entity.Designer.cs">
       <DependentUpon>202004031347178_add-entity.cs</DependentUpon>
     </Compile>
+    <Compile Include="Persistence\Migrations\202004191039276_accountType-delete.cs" />
+    <Compile Include="Persistence\Migrations\202004191039276_accountType-delete.Designer.cs">
+      <DependentUpon>202004191039276_accountType-delete.cs</DependentUpon>
+    </Compile>
     <Compile Include="Persistence\Migrations\Configuration.cs" />
     <Compile Include="Persistence\ApplicationDbContext.cs" />
     <Compile Include="Persistence\Repository\AccountRepository.cs" />
+    <Compile Include="Persistence\Repository\AccountTypeRepository.cs" />
     <Compile Include="Persistence\Repository\EmailServiceRepository.cs" />
     <Compile Include="Persistence\UnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -282,6 +291,12 @@
     <Content Include="Content\css\font-awesome.css" />
     <Content Include="Content\css\font-awesome.min.css" />
     <Content Include="Content\vendors\bootstrap-progressbar\css\bootstrap-progressbar-3.3.4.min.css" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.css" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.min.css" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.css" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.min.css" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.css" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.min.css" />
     <Content Include="Content\vendors\font-awesome\css\font-awesome.css" />
     <Content Include="Content\vendors\font-awesome\css\font-awesome.min.css" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.svg" />
@@ -289,6 +304,11 @@
     <Content Include="Content\vendors\jqvmap\jqvmap.css" />
     <Content Include="Content\vendors\jqvmap\jqvmap.min.css" />
     <Content Include="Content\vendors\nprogress\nprogress.css" />
+    <Content Include="Content\vendors\parsley.css" />
+    <Content Include="Content\vendors\prettify.min.css" />
+    <Content Include="Content\vendors\select2.min.css" />
+    <Content Include="Content\vendors\starrr.css" />
+    <Content Include="Content\vendors\switchery.min.css" />
     <Content Include="Content\vendors\validator\fv.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\fontawesome-webfont.svg" />
@@ -315,14 +335,6 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\esm\popper-utils.js" />
-    <Content Include="Scripts\esm\popper-utils.min.js" />
-    <Content Include="Scripts\esm\popper.js" />
-    <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
     <Content Include="Scripts\bootstrap.bundle.min.js.map" />
@@ -413,7 +425,21 @@
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff" />
     <Content Include="Content\vendors\font-awesome\fonts\fontawesome-webfont.woff2" />
     <Content Include="Content\vendors\font-awesome\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.css.map" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-grid.min.css.map" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.css.map" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.css.map" />
+    <Content Include="Content\vendors\bootstrap\dist\css\bootstrap.min.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -432,8 +458,10 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Scripts\vendors\autosize.js" />
     <Content Include="Scripts\vendors\bootstrap-progressbar.js" />
     <Content Include="Scripts\vendors\bootstrap-progressbar.min.js" />
+    <Content Include="Scripts\vendors\bootstrap-wysiwyg.min.js" />
     <Content Include="Scripts\vendors\bootstrap.bundle.js" />
     <Content Include="Scripts\vendors\bootstrap.bundle.min.js" />
     <Content Include="Scripts\vendors\bootstrap.js" />
@@ -442,9 +470,11 @@
     <Content Include="Scripts\vendors\curvedLines.js" />
     <Content Include="Scripts\vendors\custom.js" />
     <Content Include="Scripts\vendors\date.js" />
+    <Content Include="Scripts\vendors\daterangepicker.js" />
     <Content Include="Scripts\vendors\fastclick.js" />
     <Content Include="Scripts\vendors\gauge.min.js" />
     <Content Include="Scripts\vendors\icheck.min.js" />
+    <Content Include="Scripts\vendors\jquery.autocomplete.min.js" />
     <Content Include="Scripts\vendors\jquery.flot.js" />
     <Content Include="Scripts\vendors\jquery.flot.orderBars.js" />
     <Content Include="Scripts\vendors\jquery.flot.pie.js" />
@@ -452,14 +482,21 @@
     <Content Include="Scripts\vendors\jquery.flot.spline.js" />
     <Content Include="Scripts\vendors\jquery.flot.stack.js" />
     <Content Include="Scripts\vendors\jquery.flot.time.js" />
+    <Content Include="Scripts\vendors\jquery.hotkeys.js" />
     <Content Include="Scripts\vendors\jquery.js" />
     <Content Include="Scripts\vendors\jquery.min.js" />
+    <Content Include="Scripts\vendors\jquery.tagsinput.js" />
     <Content Include="Scripts\vendors\jquery.vmap.js" />
     <Content Include="Scripts\vendors\jquery.vmap.sampledata.js" />
     <Content Include="Scripts\vendors\jquery.vmap.world.js" />
     <Content Include="Scripts\vendors\moment.js" />
     <Content Include="Scripts\vendors\nprogress.js" />
+    <Content Include="Scripts\vendors\parsley.js" />
+    <Content Include="Scripts\vendors\prettify.min.js" />
+    <Content Include="Scripts\vendors\select2.full.min.js" />
     <Content Include="Scripts\vendors\skycons.js" />
+    <Content Include="Scripts\vendors\starrr.js" />
+    <Content Include="Scripts\vendors\switchery.js" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -474,18 +511,6 @@
     <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
-    <Content Include="Views\Account\ForgotPassword.cshtml" />
-    <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\Login.cshtml" />
-    <Content Include="Views\Account\Register.cshtml" />
-    <Content Include="Views\Account\ResetPassword.cshtml" />
-    <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -494,10 +519,6 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
     <Content Include="Scripts\README.md" />
     <Content Include="Scripts\popper.min.js.map" />
     <Content Include="Scripts\popper.js.map" />
@@ -510,6 +531,15 @@
     <Content Include="Scripts\vendors\bootstrap.bundle.min.js.map" />
     <Content Include="Scripts\vendors\bootstrap.js.map" />
     <Content Include="Scripts\vendors\bootstrap.min.js.map" />
+    <Content Include="Views\AccountType\Index.cshtml" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Views\Shared\_menu.cshtml" />
+    <Content Include="Views\AccountType\ViewAccountType.cshtml" />
+    <Content Include="Views\Account\CreateAccount.cshtml" />
+    <Content Include="Views\AccountType\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -531,6 +561,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Persistence\Migrations\202004031347178_add-entity.resx">
       <DependentUpon>202004031347178_add-entity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Persistence\Migrations\202004191039276_accountType-delete.resx">
+      <DependentUpon>202004191039276_accountType-delete.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
